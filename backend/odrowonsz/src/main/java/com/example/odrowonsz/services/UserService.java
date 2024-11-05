@@ -1,14 +1,11 @@
 package com.example.odrowonsz.services;
 
 import com.example.odrowonsz.models.database.User;
-import com.example.odrowonsz.repositiories.UserRepository;
-import lombok.AllArgsConstructor;
+import com.example.odrowonsz.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
