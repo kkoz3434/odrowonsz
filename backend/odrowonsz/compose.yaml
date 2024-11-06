@@ -1,9 +1,33 @@
+version: '3.7'
 services:
-  postgres:
-    image: 'postgres:latest'
-    environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+  odrowonsz_backend:
+    image: 'odrowonsz-backend'
+    build:
+      context: .
     ports:
-      - '5432'
+      - "5000:5000"
+    container_name: odrowonsz-backend
+    depends_on:
+      - PostgreSQL
+
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://PostgreSQL:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  PostgreSQL:
+    image: postgres:latest
+    container_name: PostgreSQL
+    volumes:
+      - odrowonsz_volume:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=apdv_db
+    restart: always
+
+volumes:
+  odrowonsz_volume:
