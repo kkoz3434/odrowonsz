@@ -17,4 +17,9 @@ public class UserService {
        long size = usersIterable.spliterator().getExactSizeIfKnown();
        return size > 0 ? usersIterable : new ArrayList<>();
     }
+
+    public Boolean checkIfUserExists(String username) {
+        var user = userRepository.getUserByUsername(username);
+        return user.isPresent();
+    }
 }
