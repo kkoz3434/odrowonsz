@@ -3,11 +3,12 @@ package com.example.odrowonsz;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {
+        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class,})
 public class OdrowonszApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(OdrowonszApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(OdrowonszApplication.class, args);
+    }
 
 }

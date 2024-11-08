@@ -1,16 +1,11 @@
 package com.example.odrowonsz.models.database;
 
-
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
 @Entity
 @Table(name = "Users")
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 public class User {
 
     @Id
@@ -20,7 +15,7 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false, unique = true)
+    @Column( unique = true, nullable = false)
     private String username;
 
     @Column(nullable = false)
@@ -29,7 +24,6 @@ public class User {
     @Column(nullable = false)
     private String surname;
 
+    @Column(nullable = false)
     private String password;
-
-
 }
