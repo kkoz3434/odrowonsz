@@ -63,4 +63,9 @@ public class UserService {
                 () -> new EntityNotFound(User.class));
         userRepository.delete(user);
     }
+
+    public UserResponseBody getUser(Long id) {
+        var user = userRepository.findById(id).orElseThrow(()-> new EntityNotFound(User.class));
+        return userMapper.fromUserToResponseBody(user);
+    }
 }

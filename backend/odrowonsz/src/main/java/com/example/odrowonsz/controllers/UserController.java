@@ -2,15 +2,18 @@ package com.example.odrowonsz.controllers;
 
 import com.example.odrowonsz.models.body_models.user.UserRequestBody;
 import com.example.odrowonsz.models.body_models.user.UserResponseBody;
-import com.example.odrowonsz.models.database.User;
 import com.example.odrowonsz.services.UserService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@Tag(name = "Controller for User Entity",
+        description = "Provides simple methods to managing User entities (GET POST PUT DELETE)" +
+                " and additional GET method for validate if user exists")
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
@@ -23,7 +26,13 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    @GetMapping("/{username}")
+    @Operation(summary = "Returns user")
+    @GetMapping("/{id}")
+    public ResponseEntity<UserResponseBody> getUser(@PathVariable Long id) {
+        return ResponseEntity.ok(userService.getUser(id));
+    }
+
+    @GetMapping("/doesExists/{username}")
     @Operation(summary = "Returns true if given username exists in database")
     public ResponseEntity<Boolean> doesUserExist(@PathVariable String username) {
         return ResponseEntity.ok(userService.checkIfUserExists(username));
