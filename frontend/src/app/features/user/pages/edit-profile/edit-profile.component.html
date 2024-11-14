@@ -1,0 +1,59 @@
+<form [formGroup]="userForm" #form="ngForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <app-input
+      controlName="username"
+      placeholder="Enter username"
+      formControlName="username"
+      [inputError]="inputError('username', form)"
+    ></app-input>
+    @if(inputError("username",form)) {<span class="error">
+      @if(userForm.get('username')?.hasError("required")){ Username is required.
+      }</span
+    >}
+  </div>
+
+  <div class="form-group">
+    <app-input
+      controlName="name"
+      placeholder="Enter name"
+      formControlName="name"
+      [inputError]="inputError('name', form)"
+    ></app-input>
+  </div>
+  @if(inputError("name",form)) {<span class="error">
+    @if(userForm.get('name')?.hasError("required")){ Password is required.
+    }</span
+  >}
+
+  <div class="form-group">
+    <app-input
+      controlName="surname"
+      placeholder="Enter surname"
+      formControlName="surname"
+      [inputError]="inputError('surname', form)"
+    ></app-input>
+  </div>
+  @if(inputError("surname",form)) {<span class="error">
+    @if(userForm.get('surname')?.hasError("required")){ Password is required.
+    }</span
+  >}
+
+  <div class="form-group">
+    <app-input
+      controlName="email"
+      placeholder="Enter email"
+      formControlName="email"
+      [inputError]="inputError('email', form)"
+    ></app-input>
+  </div>
+  @if(inputError("email",form)) {<span class="error">
+    @if(userForm.get('email')?.hasError("required")){ Password is required.
+    }</span
+  >}
+  <app-button
+    type="button"
+    text="Change password"
+    (click)="onChangePassword($event)"
+  ></app-button>
+  <app-button type="submit" text="Save"></app-button>
+</form>

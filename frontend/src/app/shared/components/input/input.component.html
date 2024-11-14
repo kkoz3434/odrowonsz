@@ -1,0 +1,9 @@
+<label [for]="controlName">{{ controlName }}</label>
+<input
+  [type]="type"
+  [id]="controlName"
+  [attr.placeholder]="placeholder"
+  [formControl]="formControl"
+  (blur)="onBlur()"
+  [class.error]="inputError"
+/>

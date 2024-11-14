@@ -1,0 +1,30 @@
+.app-button {
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.app-button.pill {
+  border-radius: 20px;
+  background-color: #007bff;
+  color: white;
+}
+
+.app-button.round {
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  width: 40px;
+  height: 40px;
+}
+
+.app-button.icon-only {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 24px;
+}
